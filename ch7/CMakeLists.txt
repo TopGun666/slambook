@@ -7,8 +7,9 @@ set( CMAKE_CXX_FLAGS "-std=c++11 -O3" )
 # 添加cmake模块以使用g2o
 list( APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake_modules )
 
-find_package( OpenCV 3.1 REQUIRED )
-# find_package( OpenCV REQUIRED ) # use this if in OpenCV2 
+#find_package( OpenCV 3.1 REQUIRED )
+set(CUDA_USE_STATIC_CUDA_RUNTIME OFF)
+find_package( OpenCV REQUIRED ) # use this if in OpenCV2 
 find_package( G2O REQUIRED )
 find_package( CSparse REQUIRED )
 
@@ -22,12 +23,12 @@ include_directories(
 add_executable( feature_extraction feature_extraction.cpp  )
 target_link_libraries( feature_extraction ${OpenCV_LIBS} )
 
-# add_executable( pose_estimation_2d2d pose_estimation_2d2d.cpp extra.cpp ) # use this if in OpenCV2 
-add_executable( pose_estimation_2d2d pose_estimation_2d2d.cpp )
+add_executable( pose_estimation_2d2d pose_estimation_2d2d.cpp extra.cpp ) # use this if in OpenCV2 
+#add_executable( pose_estimation_2d2d pose_estimation_2d2d.cpp )
 target_link_libraries( pose_estimation_2d2d ${OpenCV_LIBS} )
 
-# add_executable( triangulation triangulation.cpp extra.cpp) # use this if in opencv2 
-add_executable( triangulation triangulation.cpp )
+add_executable( triangulation triangulation.cpp extra.cpp) # use this if in opencv2 
+#add_executable( triangulation triangulation.cpp )
 target_link_libraries( triangulation ${OpenCV_LIBS} )
 
 add_executable( pose_estimation_3d2d pose_estimation_3d2d.cpp )

@@ -3,7 +3,7 @@
 #include <opencv2/features2d/features2d.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/calib3d/calib3d.hpp>
-// #include "extra.h" // use this if in OpenCV2 
+#include "extra.h" // use this if in OpenCV2
 using namespace std;
 using namespace cv;
 
@@ -76,11 +76,11 @@ void find_feature_matches ( const Mat& img_1, const Mat& img_2,
     //-- 初始化
     Mat descriptors_1, descriptors_2;
     // used in OpenCV3 
-    Ptr<FeatureDetector> detector = ORB::create();
-    Ptr<DescriptorExtractor> descriptor = ORB::create();
+//    Ptr<FeatureDetector> detector = ORB::create();
+//    Ptr<DescriptorExtractor> descriptor = ORB::create();
     // use this if you are in OpenCV2 
-    // Ptr<FeatureDetector> detector = FeatureDetector::create ( "ORB" );
-    // Ptr<DescriptorExtractor> descriptor = DescriptorExtractor::create ( "ORB" );
+     Ptr<FeatureDetector> detector = FeatureDetector::create ( "ORB" );
+     Ptr<DescriptorExtractor> descriptor = DescriptorExtractor::create ( "ORB" );
     Ptr<DescriptorMatcher> matcher  = DescriptorMatcher::create ( "BruteForce-Hamming" );
     //-- 第一步:检测 Oriented FAST 角点位置
     detector->detect ( img_1,keypoints_1 );

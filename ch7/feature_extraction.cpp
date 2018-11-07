@@ -20,10 +20,10 @@ int main ( int argc, char** argv )
     //-- 初始化
     std::vector<KeyPoint> keypoints_1, keypoints_2;
     Mat descriptors_1, descriptors_2;
-    Ptr<FeatureDetector> detector = ORB::create();
-    Ptr<DescriptorExtractor> descriptor = ORB::create();
-    // Ptr<FeatureDetector> detector = FeatureDetector::create(detector_name);
-    // Ptr<DescriptorExtractor> descriptor = DescriptorExtractor::create(descriptor_name);
+//    Ptr<FeatureDetector> detector = ORB::create();
+//    Ptr<DescriptorExtractor> descriptor = ORB::create();
+     Ptr<FeatureDetector> detector = FeatureDetector::create("ORB");
+     Ptr<DescriptorExtractor> descriptor = DescriptorExtractor::create("ORB");
     Ptr<DescriptorMatcher> matcher  = DescriptorMatcher::create ( "BruteForce-Hamming" );
 
     //-- 第一步:检测 Oriented FAST 角点位置
